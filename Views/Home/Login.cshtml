@@ -1,0 +1,48 @@
+﻿@model LoginFunctionality.Models.Credentials
+@{
+    ViewData["Title"] = "Login";
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">Login</h1>
+    <form class = "border-light" method = "post">
+        <div class = "mb-3">
+            <label for = "usernameControl" class = "form-label">UserName</label>
+            @if (ViewBag.Name != null)
+            {
+                <input type = "text" placeholder = "Enter UserName" class = "form-control" id = "usernameControl" name = "Username" value = "@ViewBag.Name"/>
+            }
+            else
+            {
+                <input type = "text" placeholder = "Enter UserName" class = "form-control" id = "usernameControl" name = "Username" />
+            }
+        </div>
+        <div class = "mb-3">
+            <label for = "passwordControl" class = "form-label">Password</label>
+            @if (ViewBag.Password != null)
+            {
+                <input type = "password" placeholder = "Enter Password" class = "form-control" id = "passwordControl" name = "Password" value = "@ViewBag.Password"/>
+            }
+            else
+            {
+                <input type = "password" placeholder = "Enter Password" class = "form-control" id = "passwordControl" name = "Password"/>
+            }
+        </div>
+        <div class="mb-3">
+            @Html.CheckBoxFor(model => model.RememberMe) Remember Me
+            <p id = "password"></p> 
+            
+        </div>
+        <button type="button" onclick = "checkCredentials()" class="btn btn-primary" asp-action = "Index" asp-controller = "Home">Login</button>
+
+        <button type="submit" class="btn btn-primary" id="liveToastBtn" asp-action = "TestField" asp-controller = "Home">Go to test field</button>
+
+        <script>
+            function checkCredentials() {
+                var x = document.getElementById("passwordControl").innerHTML;
+                document.getElementById("password").innerHTML = x
+            }
+        </script>
+    </form>
+</div>
