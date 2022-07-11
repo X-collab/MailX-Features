@@ -1,4 +1,4 @@
-namespace LoginFunctionality.Models
+namespace Token_generator.Models
 {
     public class ErrorViewModel
     {
